@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard - Alumni Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include 'links.html' %}
+    <style>
+        #banner {
+            height: 360px;
+            width: 100%;
+            object-fit: cover;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header -->
+    <nav class="navbar shadow-sm fixed-top bg-white">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/dashboard">
+                <img src="/static/logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                Alumni Management
+            </a>
+
+            <ul class="nav justify-content-end" style="margin-right: 50px;">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#educationalDocs">Educational Documents</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#certificates">Certificates</a>
+                </li>
+
+                <!-- <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+        </li> -->
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                        aria-expanded="false"> {{ username }}</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div style="height:56px"></div>
+    <!-- end header -->
+    <img class="img-fluid" id="banner" src="/static/dashboard-banner.jpg">
+    <!-- content -->
+
+    <div id="educationalDocs">
+        <hr>
+        <h4 style="margin-left: 40%;">Educational Documents</h4>
+        <hr>
+        <div class="container">
+            <div class="row justify-content-center">
+              
+                {% for degree in degrees %}
+                <div class="col-sm-3" style="margin: 12px;">
+                    <div class="card" style="width: 18rem;">
+                        <img src="/static/degree-thumbnail.jpg" class="card-img-top" alt="...">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ degree[1] }}</h5>
+                            <a href="/degree/{{ degree[0] }}" class="btn btn-primary">view degree</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            
+                
+                
+            </div>
+        </div>
+    </div>
+    <div id="certificates">
+        <hr>
+        <h4 style="margin-left: 45%;">Certificates</h4>
+        <hr>
+        <div class="container">
+            <div class="row justify-content-center">
+                {% for certificate in certificates %}
+                <div class="col-sm-3" style="margin: 12px;">
+                    <div class="card" style="width: 18rem;">
+                        <img src="/static/certificate-thumbnail.jpg" class="card-img-top" alt="...">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ certificate[1] }}</h5>
+
+                            <a href="/certificate/{{ certificate[0] }}" class="btn btn-primary ">view Certificate</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- end content -->
+    <!-- footer -->
+    <div class="container">
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a target="_blank" href="/dashboard" class="nav-link px-2 text-muted">Home</a>
+                </li>
+                <li class="nav-item"><a target="_blank" href="" class="nav-link px-2 text-muted">Educational
+                        Documents</a></li>
+
+                <li class="nav-item"><a target="_blank" href="" class="nav-link px-2 text-muted">Certificates</a>
+                </li>
+            </ul>
+            <p class="text-center text-muted">&copy; 2023 Alumni Management, Inc</p>
+        </footer>
+    </div>
+    <!-- end footer -->
+</body>
+
+</html>

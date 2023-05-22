@@ -17,10 +17,26 @@
   <body>
     <nav class="navbar shadow-sm fixed-top bg-white">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/">
       <img src="/static/logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
-      Jovian
+      Alumni Management
     </a>
+    <ul class="nav justify-content-end" style="margin-right: 50px;">
+      {% if current_user.is_authenticated %}
+      <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+      </li>
+      {% elif current_user %}
+          <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/register">Register</a>
+          </li>
+      {% endif %}
+      
+
+    </ul>
   </div>
 </nav>
 <div style="height:56px"></div>

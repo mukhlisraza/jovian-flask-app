@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Degree - Alumni Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/style.css">
+   
+    {% include 'links.html' %}
+    <style>
+        #banner {
+            height: 360px;
+            width: 100%;
+            object-fit: cover;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header -->
+    <nav class="navbar shadow-sm fixed-top bg-white">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/dashboard">
+                <img src="/static/logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                Alumni Management
+            </a>
+
+            <ul class="nav justify-content-end" style="margin-right: 50px;">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div style="height:56px"></div>
+    <!-- end header -->
+    <!-- content -->
+    <div class="outer-border-degree">
+        <div class="inner-dotted-border-degree">
+          <h1 class="certification-degree">{{degree[1]}}</h1>
+          <br>
+          <p class="certify-degree">This is to certify that</p>
+          <br>
+          <h2 class="name-degree"><b>{{degree[8]}}</b></h2>
+          <br>
+          <p class="certify-degree">has successfully completed the requirements for the Bachelor of Science in Computer Science degree at the RMIT University, Melbourne.</p>
+          <br>
+          <p class="certify-degree">This degree is awarded with a grade point average of 3.9 out of 4.0.</p>
+          <br>
+          <p class="certify-degree">Dated: March 23, 2019</p>
+          <p class="certify-degree">Dr. Jane Doe</p>
+          <p class="certify-degree">Dean of the College</p>
+        </div>
+      </div>
+    <div class="d-flex justify-content-center">
+        <a href="{{ url_for('download_degree',document_id=degree[5])}}" class="btn btn-primary">Download PDF</a>
+
+    </div>
+
+    <!-- end content -->
+    <!-- footer -->
+    <div class="container">
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a target="_blank" href="/dashboard" class="nav-link px-2 text-muted">Home</a>
+                </li>
+                <li class="nav-item"><a target="_blank" href="" class="nav-link px-2 text-muted">Educational
+                        Documents</a></li>
+
+                <li class="nav-item"><a target="_blank" href="" class="nav-link px-2 text-muted">Certificates</a>
+                </li>
+            </ul>
+            <p class="text-center text-muted">&copy; 2023 Alumni Management, Inc</p>
+        </footer>
+    </div>
+    <!-- end footer -->
+
+
+</body>
+
+</html>
+
