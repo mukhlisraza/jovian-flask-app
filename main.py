@@ -235,5 +235,36 @@ def degree(degree_id):
         flash('Degree not found.', 'error')
         return redirect(url_for('dashboard'))
 
+
+@app.route('/verify/document', methods=['GET', 'POST'])
+def verification():
+    if request.method == 'POST':
+        certificate_id = request.form['certificateID']
+        
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT * FROM documents WHERE unique_number = %s', (certificate_id,))
+        certificate = cur.fetchone()
+        cur.close()
+        
+        if certificate:
+            # Get the user details for the certificate
+            user_id = certificate[2]
+            cur = mysql.connection.cursor()
+            cur.execute('SELECT * FROM users WHERE id = %s', (user_id,))
+            user = cur.fetchone()
+            cur.close()
+            
+            if user:
+                return render_template('verify.html', certificate=certificate, user=user)
+            else:
+                flash('User not found.', 'error')
+                return render_template('home.html')
+        else:
+            flash('Certificate not found.', 'error')
+            return render_template('home.html')
+    
+    return render_template('verify.html')
+
+
 if __name__ == '__main__':
   app.run(debug=True)

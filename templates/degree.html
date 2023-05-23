@@ -44,14 +44,16 @@
           <p class="certify-degree">This is to certify that</p>
           <br>
           <h2 class="name-degree"><b>{{degree[8]}}</b></h2>
-          <br>
+          
           <p class="certify-degree">has successfully completed the requirements for the Bachelor of Science in Computer Science degree at the RMIT University, Melbourne.</p>
-          <br>
           <p class="certify-degree">This degree is awarded with a grade point average of 3.9 out of 4.0.</p>
-          <br>
           <p class="certify-degree">Dated: March 23, 2019</p>
           <p class="certify-degree">Dr. Jane Doe</p>
           <p class="certify-degree">Dean of the College</p>
+          <span>
+            <button type="button" class="btn btn-light" disabled>Verification Number: {{degree[5]}}</button>
+            
+        </span>
         </div>
       </div>
     <div class="d-flex justify-content-center">
@@ -62,18 +64,7 @@
     <!-- end content -->
     <!-- footer -->
     <div class="container">
-        <footer class="py-3 my-4">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a target="_blank" href="/dashboard" class="nav-link px-2 text-muted">Home</a>
-                </li>
-                <li class="nav-item"><a target="_blank" href="" class="nav-link px-2 text-muted">Educational
-                        Documents</a></li>
-
-                <li class="nav-item"><a target="_blank" href="" class="nav-link px-2 text-muted">Certificates</a>
-                </li>
-            </ul>
-            <p class="text-center text-muted">&copy; 2023 Alumni Management, Inc</p>
-        </footer>
+        {% include 'layouts/footer.html' %}
     </div>
     <!-- end footer -->
 
