@@ -1,21 +1,22 @@
-from flask import Flask, render_template, jsonify, request, flash,redirect, url_for,send_from_directory
+from flask import Flask, render_template, request, flash,redirect, url_for,send_from_directory
 from flask_bcrypt import Bcrypt
 from flask_mysqldb import MySQL
-import database
 from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user, login_required
-import pdfkit
+import database
+
 
 app = database.app
 
 mysql = MySQL(database.app)
+
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 
 # home
-@app.route('/')
+# @ decorator
+@app.route('/') 
 def hello_workd():
   return render_template('home.html')
-
 
 # Registeration
 @app.route('/register')
@@ -33,6 +34,7 @@ def registerform():
             flash('Password does not match', 'error')
             return render_template('register.html')
 
+        # Checking user if already register
         cur = mysql.connection.cursor()
         cur.execute('SELECT COUNT(*) FROM users WHERE username = %s', (username,))
         count = cur.fetchone()[0]
@@ -66,6 +68,10 @@ def registerform():
         return "something wrong"
 
 
+@app.route('/login')
+def login():
+  return render_template('login.html')
+
 # Import the Flask-Login module
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -89,11 +95,6 @@ def load_user(id):
     if user_data:
         user = User(user_data[0], user_data[1], user_data[2])
         return user
-
-
-@app.route('/login')
-def login():
-  return render_template('login.html')
 
 @app.route('/loginaction', methods=['GET', 'POST'])
 def loginaction():
