@@ -1,7 +1,0 @@
-Create Environment:
-python -m venv myenv
-
-
-Activate Environment:
-Set-ExecutionPolicy Bypass -Scope Process
-venv\Scripts\activate 
