@@ -44,10 +44,4 @@ flask run
 
 This app was developed as part of the [Jovian Free Flask Introductory Course](https://jovian.com/learn/web-development-with-python-and-flask). Special thanks to the instructors and the Jovian team for their guidance and support throughout the course.
 
-## License
-
-The Alumni Management App is open-source software licensed under the [MIT License](https://opensource.org/licenses/MIT).
-
-Feel free to raise issues on the GitHub repository if you encounter any bugs or have suggestions for improvements.
-
 **Thank you for using the Alumni Management App!**
